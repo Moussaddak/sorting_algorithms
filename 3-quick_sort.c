@@ -30,7 +30,7 @@ int partition(int arr[], int l, int h)
 		if (arr[j] <= pivot)
 		{
 			i++;
-			shift(arr[i], arr[j]);
+			shift(&arr[i], &arr[j]);
 		}
 	}
 	shift(&arr[i + 1], &arr[h]);
