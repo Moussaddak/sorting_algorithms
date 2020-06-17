@@ -28,5 +28,5 @@ void insertion_sort_list(listint_t **list)
 		h = h->next;
 	}
 
-	return;
+	return NULL;
 }
