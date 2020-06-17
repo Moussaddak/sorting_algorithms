@@ -9,9 +9,6 @@ void insertion_sort_list(listint_t **list)
 	int swap;
 	listint_t *h = *list, *current, *nxt;
 
-	if (!list || !*list)
-		return;
-
 	while (h)
 	{
 		current = h;
@@ -30,4 +27,6 @@ void insertion_sort_list(listint_t **list)
 		}
 		h = h->next;
 	}
+
+	return;
 }
