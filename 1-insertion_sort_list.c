@@ -5,11 +5,13 @@
  */
 void insertion_sort_list(listint_t **list)
 {
+
+	if (!list || !*list || !**list)
+		return;
+
 	int swap;
 	listint_t *h = *list, *current, *nxt;
 
-	if (!list)
-		exit( EXIT_FAILURE );
 	while (h)
 	{
 		current = h;
