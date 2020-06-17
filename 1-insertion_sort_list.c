@@ -5,8 +5,6 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	if (list == NULL)
-		return;
 
 	int swap;
 	listint_t *h = *list, *current, *nxt;
