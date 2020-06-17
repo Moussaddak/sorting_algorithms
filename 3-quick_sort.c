@@ -21,11 +21,11 @@ void quick_sort(int *array, size_t size)
 int partition(int arr[], int l, int h)
 {
 	int pivot;
-	int i;
+	int i, j;
 
 	pivot = arr[h], i = (l - 1);
 
-	for (int j = l; j <= h - 1; j++)
+	for (j = l; j <= h - 1; j++)
 	{
 		if (arr[j] <= pivot)
 		{
