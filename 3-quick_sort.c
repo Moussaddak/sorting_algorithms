@@ -1,6 +1,6 @@
 #include "sort.h"
-int partition(int arr[], int l, int h);
-void sort_func(int arr[], int l, int h);
+int partition(int arr[], int, int, size_t);
+void sort_func(int arr[], int, int, size_t);
 void shift(int *a, int *b);
 /**
  * quick_sort - sorts a list of integers in ascending order
@@ -9,48 +9,50 @@ void shift(int *a, int *b);
  */
 void quick_sort(int *array, size_t size)
 {
-	sort_func(array, 0, size);
+	sort_func(array, 0, size - 1, size);
 }
 /**
  * partition- index
  * @arr: int []
  * @l: int
  * @h: int
+ * @size: int
  * Return: int
  */
-int partition(int arr[], int l, int h)
+int partition(int arr[], int l, int h, size_t size)
 {
 	int pivot;
 	int i, j;
 
-	pivot = arr[h], i = (l - 1);
-
-	for (j = l; j <= h - 1; j++)
+	pivot = arr[h], i = l;
+	for (j = l; j < h; j++)
 	{
 		if (arr[j] <= pivot)
 		{
-			i++;
 			shift(&arr[i], &arr[j]);
+			i++;
 		}
 	}
-	shift(&arr[i + 1], &arr[h]);
-	return (i + 1);
+	shift(&arr[i], &arr[h]);
+	print_array(arr, size);
+	return (i);
 }
 /**
  * sort_func - sort int
  * @arr: int[]
  * @l: int
  * @h: int
+ * @n: int
  */
-void sort_func(int arr[], int l, int h)
+void sort_func(int arr[], int l, int h, size_t n)
 {
 	int pindex;
 
 	if (l < h)
 	{
-		pindex = partition(arr, l, h);
-		sort_func(arr, l, pindex);
-		sort_func(arr, pindex + 1, h);
+		pindex = partition(arr, l, h, n);
+		sort_func(arr, l, pindex - 1, n);
+		sort_func(arr, pindex + 1, h, n);
 	}
 }
 /**
@@ -60,7 +62,7 @@ void sort_func(int arr[], int l, int h)
  */
 void shift(int *a, int *b)
 {
-	int swap;
+	int swap = 0;
 
 	swap = *a;
 	*a = *b;
