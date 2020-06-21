@@ -31,6 +31,7 @@ int partition(int arr[], int l, int h, size_t size)
 		{
 			shift(&arr[i], &arr[j]);
 			i++;
+			print_array(arr, size);
 		}
 	}
 	shift(&arr[i], &arr[h]);
